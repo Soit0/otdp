@@ -1,0 +1,36 @@
+.top-toolbar {
+  padding: 0 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.toolbar-spacier {
+  flex: 1 1 auto;
+}
+
+.sidenav-container {
+  height: 100%;
+}
+
+.main-content {
+  margin: 40px;
+}
+
+.tile {
+  display: block;
+  border-radius: 50px;
+  background: #ffffff;
+  box-shadow:  -18px 18px 36px #969696,
+  18px -18px 36px #ffffff;
+}
+
+@media screen and (max-width: 640px) {
+
+  .top-toolbar {
+    padding: 0 20px;
+  }
+
+  .main-content {
+    margin: 20px;
+  }
+}

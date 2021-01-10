@@ -1,1 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Theme variables : */
+$color-primary: #3F51B5;
+$color-primary-variant: #202b99;
+$color-secondary: #B5993F;
+$color-background: white;
+$color-surface: white;
+$color-error: #B5515A;
+$color-typo-on-primary: white;
+$color-typo-on-secondary: black;
+$color-typo-on-background: black;
+$color-typo-on-surface: black;
+$color-typo-on-error: white;
+
+
+
+html, body {
+  height: 100%;
+};
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: $color-background;
+  color: $color-typo-on-surface;
+};
+
+.primary {
+  background: $color-primary;
+  color: $color-typo-on-primary;
+}
+
+.primary-variant {
+  background: $color-primary-variant;
+  color: $color-typo-on-primary;
+}
+
+.background {
+  background: $color-background;
+  color: $color-typo-on-background;
+}
+
+.secondary {
+  background: $color-secondary;
+  color: $color-typo-on-secondary;
+}
+
+.error {
+  background: $color-typo-on-error;
+  color: $color-typo-on-error;
+}
+
+
