@@ -2,18 +2,16 @@
   <button type="button" mat-icon-button (click)="drawer.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
-  <span>OTDP</span>
+  <span routerLink="/home" (click)="drawer.close()">OTDP</span>
 </mat-toolbar>
 <mat-drawer-container class="background sidenav-container" autosize>
   <mat-drawer #drawer class="primary-variant" mode="over">
     <mat-nav-list>
       <a mat-list-item routerLink="/home" (click)="drawer.close()">Home</a>
-      <a mat-list-item routerLink="/about" (click)="drawer.close()">About me</a>
       <a mat-list-item routerLink="/curriculum" (click)="drawer.close()">Curriculum</a>
       <a mat-list-item routerLink="/projects" (click)="drawer.close()">Projects</a>
       <a mat-list-item routerLink="/notes" (click)="drawer.close()">Notes</a>
       <a mat-list-item routerLink="/contact" (click)="drawer.close()">Contact me</a>
-      <a mat-list-item routerLink="/login" (click)="drawer.close()">{{isLoggedIn ? "Logout" : "Login"}}</a>
     </mat-nav-list>
   </mat-drawer>
   <mat-drawer-content class="main-content">

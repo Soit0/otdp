@@ -7,17 +7,21 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SharedModule} from './shared/shared.module';
 
 import { HomepageComponent } from './homepage/homepage.component';
-import { AboutComponent } from './about/about.component';
 import { CurriculumComponent } from './curriculum/curriculum.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { NotesComponent } from './notes/notes.component';
 import { ContactComponent } from './contact/contact.component';
+import {environment} from '../environments/environment';
+// Firebase import
+import {AngularFireModule} from '@angular/fire';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {AngularFireStorageModule} from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
-    AboutComponent,
     CurriculumComponent,
     ProjectsComponent,
     NotesComponent,
@@ -28,6 +32,11 @@ import { ContactComponent } from './contact/contact.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
+    // Firebase modules
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule, // firestore / db
+    AngularFireAuthModule, // auth
+    AngularFireStorageModule // storage
   ],
   providers: [],
   bootstrap: [AppComponent]
