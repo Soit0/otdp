@@ -16,12 +16,8 @@
   margin: 40px 120px;
 }
 
-.tile {
-  display: block;
-  border-radius: 50px;
-  background: #ffffff;
-  box-shadow:  -18px 18px 36px #969696,
-  18px -18px 36px #ffffff;
+.active-tab {
+  background: #3F51B5;
 }
 
 @media screen and (max-width: 640px) {

@@ -1,5 +1,5 @@
 <mat-card>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="!(angularFireAuth.authState | async)">
     <mat-form-field>
       <input
         matInput
@@ -35,4 +35,6 @@
       Submit
     </button>
   </form>
+  <div *ngIf="angularFireAuth.authState | async as user">
+  </div>
 </mat-card>
