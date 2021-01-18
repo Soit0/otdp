@@ -1,0 +1,30 @@
+.note-component {
+  height: 100%;
+  width: inherit;
+  display: grid;
+  grid-template-columns: auto 5fr;
+  grid-template-rows: 1fr;
+}
+
+.file-tree-section {
+  grid-area: 1 / 1 / 2 / 2;
+  border: green solid 1px;
+  list-style-type: none;
+  margin: 0 15px;
+}
+
+.editor-section {
+  grid-area: 1 / 2 / 2 / 3;
+  border: blue solid 1px;
+}
+
+.example-tree-invisible {
+  display: none;
+}
+
+.example-tree ul,
+.example-tree li {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}

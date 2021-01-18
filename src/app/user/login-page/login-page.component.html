@@ -34,7 +34,13 @@
     >
       Submit
     </button>
+    <p>{{form.invalid}}</p>
+    <p>{{loading}}</p>
   </form>
   <div *ngIf="angularFireAuth.authState | async as user">
+    <button
+      mat-raised-button
+      (click)="angularFireAuth.signOut()"
+      >Logout</button>
   </div>
 </mat-card>
