@@ -18,6 +18,8 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {MatTreeModule} from '@angular/material/tree';
+import {NgxEditorModule} from 'ngx-editor';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,7 @@ import {MatTreeModule} from '@angular/material/tree';
     CurriculumComponent,
     ProjectsComponent,
     NotesComponent,
-    ContactComponent
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,9 +39,10 @@ import {MatTreeModule} from '@angular/material/tree';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // firestore / db
     AngularFireAuthModule, // auth
-    AngularFireStorageModule,
+    AngularFireStorageModule,     // storage
     MatTreeModule,
-    // storage
+    NgxEditorModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
