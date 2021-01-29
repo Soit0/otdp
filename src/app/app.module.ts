@@ -41,7 +41,6 @@ import {FormsModule} from '@angular/forms';
     AngularFireAuthModule, // auth
     AngularFireStorageModule,     // storage
     MatTreeModule,
-    NgxEditorModule,
     FormsModule
   ],
   providers: [],

@@ -16,22 +16,32 @@ import {AngularFireAuth} from '@angular/fire/auth';
 export class NotesComponent implements OnInit, OnDestroy  {
   treeControl = new NestedTreeControl<Data>(node => node.children);
   dataSource = new MatTreeNestedDataSource<Data>();
+  editor: any;
+  content: any;
 
 
   constructor(public angularFireAuth: AngularFireAuth) {
     this.dataSource.data = DATA_MOCK;
-    console.log(DATA_MOCK);  }
+    console.log(DATA_MOCK); }
 
   ngOnInit(): void {
-    const editor = new EditorJS('editorjs');
+    this.editor = new EditorJS('editorjs');
   }
 
   ngOnDestroy(): void {
 
   }
-  saveEditor(): void {
 
-}
+  saveEditor(): void {
+    this.editor.save().then((outputData) => {
+      console.log('Article data: ', outputData);
+      this.content = JSON.stringify(outputData);
+      console.log('content : ', outputData);
+      console.log(typeof this.content);
+    }).catch((error) => {
+      console.log('Saving failed: ', error);
+    });
+  }
 
   hasChild = (_: number, node: Data) => !!node.children && node.children.length > 0;
 
