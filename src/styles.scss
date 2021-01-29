@@ -51,4 +51,12 @@ body {
   color: $color-typo-on-error;
 }
 
+router-outlet + * {
+  height: auto;
+  padding: 30px;
+  margin: 20px;
+  display: grid;
+  border: 10px solid black;
+}
+
 

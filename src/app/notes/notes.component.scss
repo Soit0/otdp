@@ -1,9 +1,9 @@
-.note-component {
-  height: 100%;
-  width: inherit;
-  display: grid;
-  grid-template-columns: auto 5fr;
-  grid-template-rows: 1fr;
+::ng-deep app-notes {
+  grid-template-columns: 1fr 5fr;
+}
+
+.mat-tree-node {
+  cursor: pointer;
 }
 
 .file-tree-section {
