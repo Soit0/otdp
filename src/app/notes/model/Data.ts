@@ -1,6 +1,7 @@
+import {Block} from './Block';
+
 export interface Data {
-  name: string;
-  uuid: number;
-  children?: Data[];
-  text?: string;
+  time: number;
+  blocks: Block[];
+  version: string;
 }

@@ -1,15 +1,16 @@
 import {NestedTreeControl} from '@angular/cdk/tree';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MatTreeNestedDataSource} from '@angular/material/tree';
-import {Data} from './model/Data';
-import {DATA_MOCK} from './model/DataMock';
+import {TreeNode} from './model/TreeNode';
+import {TREE_MOCK} from './mock/TreeMock';
+import {DOCUMENT_LIST_MOCK} from './mock/NoteListMock';
 
 import EditorJS from '@editorjs/editorjs';
 import Header from '@editorjs/header';
 import List from '@editorjs/list';
 
 import {AngularFireAuth} from '@angular/fire/auth';
-import {log} from 'util';
+import {Note} from './model/Note';
 
 @Component({
   selector: 'app-notes',
@@ -17,16 +18,18 @@ import {log} from 'util';
   styleUrls: ['./notes.component.scss']
 })
 export class NotesComponent implements OnInit, OnDestroy {
-  treeControl = new NestedTreeControl<Data>(node => node.children);
-  dataSource = new MatTreeNestedDataSource<Data>();
+  treeControl = new NestedTreeControl<TreeNode>(node => node.children);
+  dataSource = new MatTreeNestedDataSource<TreeNode>();
   editor: any;
-  content: any;
-  currentUuid: number;
+  editorContent: any;
+  currentUid: string;
+  selectedDocument: Note;
+  selectedDocumentStringified: string;
 
 
   constructor(public angularFireAuth: AngularFireAuth) {
-    this.dataSource.data = DATA_MOCK;
-    console.log(DATA_MOCK);
+    this.dataSource.data = TREE_MOCK;
+    console.log(TREE_MOCK);
   }
 
   ngOnInit(): void {
@@ -35,7 +38,10 @@ export class NotesComponent implements OnInit, OnDestroy {
       tools: {
         header: Header,
         list: List
-      }
+      },
+      placeholder: 'Let`s write an awesome story!',
+      data: (DOCUMENT_LIST_MOCK.find(document => document.uid === '111')).data
+      // TODO: create readOnlyMode
     });
   }
 
@@ -46,37 +52,24 @@ export class NotesComponent implements OnInit, OnDestroy {
   saveEditor(): void {
     this.editor.save().then((outputData) => {
       console.log('Article data: ', outputData);
-      this.content = JSON.stringify(outputData);
-      console.log('content : ', outputData);
-      console.log(typeof this.content);
+      this.editorContent = JSON.stringify(outputData);
     }).catch((error) => {
       console.log('Saving failed: ', error);
     });
   }
 
-  hasChild(_: number, node: Data): boolean {
+  hasChild(_: number, node: TreeNode): boolean {
     return node.children?.length > 0;
   }
 
   setCurrentFile(node: any): void {
     if (!this.hasChild(0, node)) {
-      this.currentUuid = node.uuid;
-      this.editor.isReady
-        .then(() => {
-          this.editor = new EditorJS({
-            holder: 'editorjs',
-            tools: {
-              header: Header,
-              list: List
-            },
-            data:
-          });
-          console.log('Editor.js is ready to work!');
-          /** Do anything you need after editor initialization */
-        })
-        .catch((reason) => {
-          console.log(`Editor.js initialization failed because of ${reason}`)
-        });
+      this.currentUid = node.uid;
+      this.selectedDocument = DOCUMENT_LIST_MOCK.find(document => document.uid === this.currentUid);
+      this.selectedDocumentStringified = JSON.stringify(this.selectedDocument.data.blocks);
+      this.editor.block.render({
+        blocks: this.selectedDocument
+      });
     }
   }
 

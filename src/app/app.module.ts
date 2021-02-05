@@ -5,6 +5,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SharedModule} from './shared/shared.module';
+import {MatTreeModule} from '@angular/material/tree';
+import {FormsModule} from '@angular/forms';
 
 import { HomepageComponent } from './homepage/homepage.component';
 import { CurriculumComponent } from './curriculum/curriculum.component';
@@ -17,9 +19,7 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireStorageModule} from '@angular/fire/storage';
-import {MatTreeModule} from '@angular/material/tree';
-import {NgxEditorModule} from 'ngx-editor';
-import {FormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations: [
